@@ -163,9 +163,12 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N5O-W9-FSI">
                                                 <rect key="frame" x="19.666666666666657" y="27" width="54" height="60"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                <state key="normal" title="+/-">
+                                                <state key="normal" title="^">
                                                     <color key="titleColor" systemColor="labelColor"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="powerButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7iG-J1-yyM"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>

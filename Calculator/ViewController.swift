@@ -7,15 +7,21 @@
 
 import UIKit
 
+precedencegroup PowerPrecedence { higherThan: MultiplicationPrecedence }
+infix operator ^^ : PowerPrecedence
+func ^^ (radix: Int, power: Int) -> Int {
+    return Int(pow(Double(radix), Double(power)))
+}
+
 class ViewController: UIViewController {
     
-    var result = 0;
+    var result: Int = 0;
     var action = ""
     var value = "";
     var first = "";
     var second = "";
-    var firstValue = 0;
-    var secondValue = 0;
+    var firstValue: Double = 0;
+    var secondValue: Double = 0;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,31 +96,45 @@ class ViewController: UIViewController {
     @IBAction func equalButton(_ sender: UIButton) {
         if(action == "+") {
             second = value;
-            firstValue = Int(first)!;
-            secondValue = Int(second)!;
-            result = firstValue + secondValue;
+            firstValue = Double(first)!;
+            secondValue = Double(second)!;
+            result = Int(firstValue + secondValue);
             self.finalResult.text = String(result);
         }
         else if(action == "-") {
             second = value;
-            firstValue = Int(first)!;
-            secondValue = Int(second)!;
-            result = firstValue - secondValue;
+            firstValue = Double(first)!;
+            secondValue = Double(second)!;
+            result = Int(firstValue - secondValue);
             self.finalResult.text = String(result);
         }
         else if(action == "x") {
             second = value;
-            firstValue = Int(first)!;
-            secondValue = Int(second)!;
-            result = firstValue * secondValue;
+            firstValue = Double(first)!;
+            secondValue = Double(second)!;
+            result = Int(firstValue * secondValue);
             self.finalResult.text = String(result);
         }
         else if(action == "/") {
             second = value;
-            firstValue = Int(first)!;
-            secondValue = Int(second)!;
-            result = firstValue/secondValue;
+            firstValue = Double(first)!;
+            secondValue = Double(second)!;
+            result = Int(firstValue / secondValue);
             self.finalResult.text = String(result);
+        }
+        else if(action == "%") {
+            second = value;
+            firstValue = Double(first)!;
+            secondValue = Double(second)!;
+            result = Int((firstValue * 100)/secondValue);
+            self.finalResult.text = String(result);
+        }
+        else if(action == "^") {
+            second = value;
+            let one = Int(first)!;
+            let two = Int(second)!;
+            let both: Int = one ^^ two;
+            self.finalResult.text = String(both);
         }
     }
     @IBAction func minusButton(_ sender: UIButton) {
@@ -139,6 +159,13 @@ class ViewController: UIViewController {
     }
     @IBAction func percentageButton(_ sender: UIButton) {
         action = "%"
+        first = value;
+        value = "";
+    }
+    @IBAction func powerButton(_ sender: UIButton) {
+        action = "^"
+        first = value;
+        value = "";
     }
     @IBAction func clearButton(_ sender: UIButton) {
         result = 0;
@@ -151,4 +178,5 @@ class ViewController: UIViewController {
         self.finalResult.text = "0";
     }
 }
+
 
