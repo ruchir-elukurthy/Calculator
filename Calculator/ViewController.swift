@@ -9,11 +9,13 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    var result = "";
+    var result = 0;
     var action = ""
-    var value = 0.0;
-    var first = 0.0;
-    var second = 0.0;
+    var value = "";
+    var first = "";
+    var second = "";
+    var firstValue = 0;
+    var secondValue = 0;
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,53 +25,63 @@ class ViewController: UIViewController {
     @IBOutlet weak var finalResult: UILabel!
     
     @IBAction func zeroButton(_ sender: UIButton) {
-        value = 0;
-        self.finalResult.text = String(0)
+        self.finalResult.text = "";
+        value += "0";
+        self.finalResult.text! += value;
     }
     
     @IBAction func oneButton(_ sender: UIButton) {
-        value = 1;
-        self.finalResult.text = String(1)
+        self.finalResult.text = "";
+        value += "1";
+        self.finalResult.text! += value;
     }
     
     @IBAction func twoButton(_ sender: UIButton) {
-        value = 2;
-        self.finalResult.text = String(2);
+        self.finalResult.text = "";
+        value += "2";
+        self.finalResult.text! += value;
     }
 
     @IBAction func threeButton(_ sender: UIButton) {
-        value = 3;
-        self.finalResult.text = String(3)
+        self.finalResult.text = "";
+        value += "3";
+        self.finalResult.text! += value;
     }
 
     @IBAction func fourButton(_ sender: UIButton) {
-        value = 4;
-        self.finalResult.text = String(4)
+        self.finalResult.text = "";
+        value += "4";
+        self.finalResult.text! += value;
     }
 
     @IBAction func fiveButton(_ sender: UIButton) {
-        value = 5;
-        self.finalResult.text = String(5)
+        self.finalResult.text = "";
+        value += "5";
+        self.finalResult.text! += value;
     }
 
     @IBAction func sixButton(_ sender: UIButton) {
-        value = 6;
-        self.finalResult.text = String(6)
+        self.finalResult.text = "";
+        value += "6";
+        self.finalResult.text! += value;
     }
 
     @IBAction func sevenButton(_ sender: UIButton) {
-        value = 7;
-        self.finalResult.text = String(7)
+        self.finalResult.text = "";
+        value += "7";
+        self.finalResult.text! += value;
     }
 
     @IBAction func eightButton(_ sender: UIButton) {
-        value = 8;
-        self.finalResult.text = String(8)
+        self.finalResult.text = "";
+        value += "8";
+        self.finalResult.text! += value;
     }
 
     @IBAction func nineButton(_ sender: UIButton) {
-        value = 9;
-        self.finalResult.text = String(9)
+        self.finalResult.text = "";
+        value += "9";
+        self.finalResult.text! += value;
     }
 
     @IBAction func decimalButton(_ sender: UIButton) {
@@ -77,46 +89,66 @@ class ViewController: UIViewController {
     }
     @IBAction func equalButton(_ sender: UIButton) {
         if(action == "+") {
-            value = value + first;
-            self.finalResult.text = String(value);
+            second = value;
+            firstValue = Int(first)!;
+            secondValue = Int(second)!;
+            result = firstValue + secondValue;
+            self.finalResult.text = String(result);
         }
-        if(action == "-") {
-            value = value - first;
-            self.finalResult.text = String(value);
+        else if(action == "-") {
+            second = value;
+            firstValue = Int(first)!;
+            secondValue = Int(second)!;
+            result = firstValue - secondValue;
+            self.finalResult.text = String(result);
         }
-        if(action == "x") {
-            value = value*first;
-            self.finalResult.text = String(value);
+        else if(action == "x") {
+            second = value;
+            firstValue = Int(first)!;
+            secondValue = Int(second)!;
+            result = firstValue * secondValue;
+            self.finalResult.text = String(result);
         }
-        if(action == "/") {
-            value = value/first;
-            print(value);
-            self.finalResult.text = String(value);
+        else if(action == "/") {
+            second = value;
+            firstValue = Int(first)!;
+            secondValue = Int(second)!;
+            result = firstValue/secondValue;
+            self.finalResult.text = String(result);
         }
     }
     @IBAction func minusButton(_ sender: UIButton) {
         action = "-"
         first = value;
+        value = ""
     }
     @IBAction func plusButton(_ sender: UIButton) {
         action = "+"
         first = value;
+        value = "";
     }
     @IBAction func multiplyButton(_ sender: UIButton) {
         action = "x"
         first = value;
+        value = "";
     }
     @IBAction func divideButton(_ sender: UIButton) {
         action = "/"
         first = value;
+        value = "";
     }
     @IBAction func percentageButton(_ sender: UIButton) {
         action = "%"
     }
     @IBAction func clearButton(_ sender: UIButton) {
-        value = 0;
-        self.finalResult.text = String(0)
-        action = "";
+        result = 0;
+        action = ""
+        value = "";
+        first = "";
+        second = "";
+        firstValue = 0;
+        secondValue = 0;
+        self.finalResult.text = "0";
     }
 }
 
